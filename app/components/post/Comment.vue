@@ -3,6 +3,9 @@ import type { TippyComponent } from 'vue-tippy'
 
 const appConfig = useAppConfig()
 
+/** 仅在配置了评论服务时渲染评论区，避免未启用时残留占位 */
+const hasComment = computed(() => Boolean(appConfig.twikoo?.envId))
+
 const commentEl = useTemplateRef('comment')
 const popoverEl = useTemplateRef<TippyComponent>('popover')
 const popoverJumpTo = ref('')
@@ -61,7 +64,7 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="comment" class="z-comment">
+<section v-if="hasComment" ref="comment" class="z-comment">
 	<h3 class="text-creative">
 		评论区
 	</h3>

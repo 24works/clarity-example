@@ -1,26 +1,26 @@
 import type { FeedEntry } from './app/types/feed'
 
 const basicConfig = {
-	title: '纸鹿摸鱼处',
-	subtitle: '纸鹿至麓不知路，支炉制露不止漉',
+	title: 'CreamClarityDEMO',
+	subtitle: '用上 Clarity 主题全部功能的演示站点',
 	// 长 description 利好于 SEO
-	description: '纸鹿本鹿的个人博客，分享技术与生活。“折腾不止，摸鱼生活——摸门🙏🏻”。纸鹿是一名开源爱好者，结识了许多志同道合的朋友。这个博客记录了他在生活和技术学习中的点滴经历，充满启发与思考。网站界面简洁美观，内容丰富实用，人气互动活跃，涵盖了编程、生活、学习等多个领域，为读者提供了卓越的阅读体验。',
+	description: 'CreamClarityDEMO 是基于 Clarity 博客主题构建的功能演示站点，覆盖 MDC 语法、文章分类、标签、归档、合集、订阅源、代码高亮、数学公式、图表与乐谱渲染、友链和全站搜索等能力，用于快速了解主题特性并沉淀下游改动。',
 	author: {
-		name: '纸鹿本鹿',
-		avatar: 'https://www.zhilu.site/api/avatar.png',
-		email: 'hi@zhilu.cyou',
-		homepage: 'https://www.zhilu.site/',
+		name: 'CreamClarityDEMO',
+		avatar: 'https://weavatar.com/avatar/?d=initials&name=Cream',
+		email: 'creamdemo@iicemeta.com',
+		homepage: '/',
 	},
 	copyright: {
 		abbr: 'CC BY-NC-SA 4.0',
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
-	favicon: 'https://www.zhilu.site/api/icon.png',
+	favicon: 'https://weavatar.com/avatar/?d=initials&name=Cream',
 	language: 'zh-CN',
-	timeEstablished: '2019-07-19',
+	timeEstablished: '2026-10-03',
 	timeZone: 'Asia/Shanghai',
-	url: 'https://blog.zhilu.site/',
+	url: 'https://cdemo.iicemeta.com/',
 	defaultCategory: '未分类',
 }
 
@@ -33,16 +33,14 @@ const blogConfig = {
 	article: {
 		categories: {
 			[basicConfig.defaultCategory]: { icon: 'tabler:circle-dashed' },
-			/** 实践可复用操作经验：工具/系统/部署/排障 */
-			技术: { icon: 'tabler:mouse', color: '#33aaff' },
-			/** 编程：代码实现/工程实践/开发方法 */
-			开发: { icon: 'tabler:code', color: '#7777ff' },
-			/** 安全：漏洞/CTF/恶意软件/安全事件分析 */
-			安全: { icon: 'tabler:bug', color: '#ff7733' },
-			/** 思考：观点讨论/复盘反思/行业或产品观察 */
-			杂谈: { icon: 'tabler:message', color: '#33bbaa' },
-			/** 记录叙事：个人经历/校园家庭/日常片段 */
-			生活: { icon: 'tabler:leaf', color: '#ff7777' },
+			/** 框架能力演示：MDC/分类/标签/归档/合集/组件 */
+			功能演示: { icon: 'tabler:components', color: '#ff77aa' },
+			/** 写作与排版技巧：版式、语法、长文组织 */
+			写作指南: { icon: 'tabler:pencil', color: '#33bbaa' },
+			/** 站点个性化与部署：配置、订阅、SEO */
+			站点配置: { icon: 'tabler:settings', color: '#7777ff' },
+			/** 关于本演示站：站点介绍与更新 */
+			关于: { icon: 'tabler:info-circle', color: '#33aaff' },
 		},
 		/** 文章版式，首个为默认版式 */
 		types: {
@@ -72,14 +70,7 @@ const blogConfig = {
 	},
 
 	/** 向 <head> 中添加脚本 */
-	scripts: [
-		// 自己部署的 Umami 统计服务
-		{ 'src': 'https://zhi.zhilu.site/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
-		// 自己网站的 Cloudflare Insights 统计服务
-		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
-		// Twikoo 评论系统
-		{ src: 'https://s4.zstatic.net/npm/twikoo@1.7.20/dist/twikoo.min.js', defer: true },
-	],
+	scripts: [],
 
 	/** 文章统计配置 */
 	stats: {
@@ -93,22 +84,22 @@ const blogConfig = {
 
 	/** 自己部署的 Twikoo 服务 */
 	twikoo: {
-		envId: 'https://twikoo.zhilu.site/',
-		preload: 'https://twikoo.zhilu.site/',
+		envId: '',
+		preload: '',
 	},
 }
 
 /** 用于生成 OPML 和友链页面配置 */
 export const myFeed: FeedEntry = {
 	author: blogConfig.author.name,
-	sitenick: '摸鱼处',
+	sitenick: blogConfig.title,
 	title: blogConfig.title,
 	desc: blogConfig.subtitle || blogConfig.description,
 	link: blogConfig.url,
 	feed: new URL('/atom.xml', blogConfig.url).toString(),
 	icon: blogConfig.favicon,
 	avatar: blogConfig.author.avatar,
-	archs: ['Nuxt', 'Vercel'],
+	archs: ['Nuxt'],
 	date: blogConfig.timeEstablished,
 	comment: '这是我自己',
 }

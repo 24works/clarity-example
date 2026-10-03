@@ -16,6 +16,8 @@ export interface ArticleSchema {
 	published?: string
 	categories?: string[]
 	tags?: string[]
+	/** 合集（系列）名称，用于将多篇文章归入同一合集 */
+	series?: string
 	type?: ArticleType
 
 	image?: string
@@ -36,6 +38,7 @@ const articleSchema = z.object({
 	published: z.string().optional(),
 	categories: z.array(z.string()).default([blogConfig.defaultCategory]),
 	tags: z.array(z.string()).default([]),
+	series: z.string().optional(),
 	type: z.enum(articleTypes).optional().default(articleTypes[0]),
 
 	image: z.string().optional(),
